@@ -18,6 +18,54 @@
 	8. Set your MailChimp email post URL on line 300 See video: https://youtu.be/YUdP1qfMot8
 	9. FTP to your Website. 
 	-->
+
+
+	<script>
+		// Animate Delay
+		setTimeout(function(){ jQuery("#cspio-content").show().addClass('animated fadeIn'); }, 250);
+		var quote;
+		var author;
+		var obj;
+		// Reseize	
+		function resize(){
+				$('head').append("<style id='form-style' type='text/css'></style>");
+				$('#form-style').html('.cspio .input-group-btn, .cspio .input-group{display:block;width:100%;}.cspio #cspio-subscribe-btn{margin-left:0;width:100%;display:block;}.cspio .input-group .form-control:first-child, .cspio .input-group-addon:first-child, .cspio .input-group-btn:first-child>.btn, .cspio .input-group-btn:first-child>.dropdown-toggle, .cspio .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {border-bottom-right-radius: 4px;border-top-right-radius: 4px;}.cspio .input-group .form-control:last-child, .cspio .input-group-addon:last-child, .cspio .input-group-btn:last-child>.btn, .cspio .input-group-btn:last-child>.dropdown-toggle, .cspio .input-group-btn:first-child>.btn:not(:first-child) {border-bottom-left-radius: 4px;border-top-left-radius: 4px;}');
+		}
+		
+		function httpGet()
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous", false ); // false for synchronous request
+    xmlHttp.setRequestHeader("X-Mashape-Key",  "mRTI8i3UsOmshafT6QsXYpCM00rmp1BSDVGjsnINbcG4BbF850");
+    xmlHttp.send( null );
+    obj=JSON.parse(xmlHttp.responseText);
+ 	console.log(typeof(obj));
+ 	quote=obj.quote;
+ 	author=obj.author;
+ 	console.log(obj);
+    return xmlHttp.responseText;
+}
+
+function getAuthor()
+{
+author=obj.author;
+}
+		$('#cspio-content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
+			function(){
+				var width = $('#cspio-field-wrapper').width();
+				if(width < 480 && width != 0){
+					resize();
+				}
+			}
+		);
+	</script>
+
+
+
+
+
+
+
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>maturedAI</title>
@@ -25,7 +73,7 @@
 	<meta name="generator" content="comingsoonpage.com 1.0.0" />
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="https://static.comingsoonpage.com/cspio-assets/1.0.0/favicon.ico">
+	<link rel="shortcut icon" href="robot.png">
 	<meta property="og:url" content="" />
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="My Coming Soon Page" />
@@ -39,7 +87,7 @@
 	<link rel="stylesheet" href="https://static.comingsoonpage.com/cspio-assets/1.0.0/style.css">
 
 	<!-- Google Fonts -->
-	<link class="gf-headline" href='https://fonts.googleapis.com/css?family=Pacifico:400&subset=' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre" rel="stylesheet">
 			
 	<!-- Animate CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
@@ -60,7 +108,7 @@
 	
 	html{
 		height:100%;
-		background: #ffffff url(https://images.unsplash.com/photo-1449168013943-3a15804bb41c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=1958d4bfb59a246c6092ff0daabd284b); no-repeat center bottom fixed;
+		background: #ffffff url(https://source.unsplash.com/1600x900); no-repeat center bottom fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
@@ -114,12 +162,12 @@
 	}
 
     .cspio h1, .cspio h2, .cspio h3, .cspio h4, .cspio h5, .cspio h6{
-        font-family: 'Pacifico';
+        font-family: 'Frank Ruhl Libre';
         color:#ffffff;
     }
 
 	#cspio-headline{
-		font-family: 'Pacifico';
+		font-family: 'Frank Ruhl Libre';
 		font-weight: 400;
 		font-style: ;
 				font-size: 48px;
@@ -140,6 +188,8 @@
 	#cspio-socialprofiles a {
 	  color: #ffffff;
 	}
+
+
 	.cspio .btn-primary,
 	.cspio .btn-primary:focus,
 	.gform_button,
@@ -290,58 +340,16 @@
 <body>
 	<div id="cspio-page">
 		<div id="cspio-content">
-			
-			<img id="cspio-logo" src="https://static.comingsoonpage.com/cspio-assets/1.0.0/seedprod-logo-white.png">
-			    				
-			<h1 id="cspio-headline">CmaturedAI</h1>			    				
-			
-			<div id="cspio-description">Get ready! Something really cool is coming!</div>			    				
-			
-			<form id="cspio-form" action="" method="post">
-				<div id="cspio-field-wrapper">
-					<div class="row">
-						<div class="col-md-12 seperate"><div class="input-group"><input id="cspio-email" name="EMAIL" class="form-control input-lg form-el" type="email" placeholder="Email" required/>
-					<span class="input-group-btn"><button id="cspio-subscribe-btn" type="submit" class="btn btn-lg btn-primary form-el noglow">Notify Me</button></span></div></div>
-					</div>
-				</div>
-			</form>
-			
-			<span id="cspio-privacy-policy-txt">We promise to never spam you.</span>
-			    						    			    								    			    			    				
-			<div id="cspio-socialprofiles">
-				<a href="" target="_blank"><i class="fa fa-facebook-official fa-2x"></i></a>			
-				<a href="" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>			
-				<a href="mailto:" target="_blank"><i class="fa fa-envelope fa-2x"></i></a>			
-			</div>
-
-			<div id="cspio-credit">
-					<span>Created with <a target="_blank" href="https://www.comingsoonpage.com"><img id="aff" src="https://static.comingsoonpage.com/cspio-assets/1.0.0/comingsoonpage.com-logo.png" alt="Created by ComingSoonPage.com"></a> Free download <a target="_blank" href="http://www.seedprod.com/free-coming-soon-page/" style="text-decoration:underline" alt="Get your free coming soon page.">here.</a>
-				</span></div>
-									    									    			    			    							    			     			    		
+			<h1 id="cspio-headline"><script type="text/javascript">httpGet();document.write(quote)</script></h1>			    				
+			<div id="cspio-description"><script type="text/javascript">getAuthor(); document.write(author)</script></div>	
+				<div id="cspio-socialprofiles" style="padding-top: 200px;">
+				<a href="https://www.facebook.com/say2surender" target="_blank"><i class="fa fa-facebook-official fa-2x"></i></a>			
+				<a href="https://twitter.com/HiSurender" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>			
+				<a href="mailto:say2surender@gmail.com" target="_blank"><i class="fa fa-envelope fa-2x"></i></a>			
+			</div>		    			    
 		</div><!-- end of #cspio-content -->
+	
 	</div>
-
-
-	<script>
-		// Animate Delay
-		setTimeout(function(){ jQuery("#cspio-content").show().addClass('animated fadeIn'); }, 250);
-
-		// Reseize	
-		function resize(){
-				$('head').append("<style id='form-style' type='text/css'></style>");
-				$('#form-style').html('.cspio .input-group-btn, .cspio .input-group{display:block;width:100%;}.cspio #cspio-subscribe-btn{margin-left:0;width:100%;display:block;}.cspio .input-group .form-control:first-child, .cspio .input-group-addon:first-child, .cspio .input-group-btn:first-child>.btn, .cspio .input-group-btn:first-child>.dropdown-toggle, .cspio .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {border-bottom-right-radius: 4px;border-top-right-radius: 4px;}.cspio .input-group .form-control:last-child, .cspio .input-group-addon:last-child, .cspio .input-group-btn:last-child>.btn, .cspio .input-group-btn:last-child>.dropdown-toggle, .cspio .input-group-btn:first-child>.btn:not(:first-child) {border-bottom-left-radius: 4px;border-top-left-radius: 4px;}');
-		}
-		
-		$('#cspio-content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
-			function(){
-				var width = $('#cspio-field-wrapper').width();
-				if(width < 480 && width != 0){
-					resize();
-				}
-			}
-		);
-	</script>
-
 	</body>
 </html>
 
